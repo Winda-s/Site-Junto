@@ -31,7 +31,7 @@ new Chart(umidade, {
     datasets: [
       {
         label: "Umidade",
-        data: [80, 82, 80, 85, 80, 83],
+        data: [64, 60, 65, 67, 70, 65],
         borderWidth: 3,
         borderColor: "#36a2eb",
         backgroundColor: "#36a2eb",

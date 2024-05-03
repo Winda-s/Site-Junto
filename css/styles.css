@@ -166,8 +166,6 @@ button.button-login:hover {
     background-color: #faf8f8;
     width: 100%;
     text-align: center;
-    padding: 4.0625rem 0;
-    height: 1800px;
 }
 
 .conteudo-nossa-solucao-titulo {
@@ -201,7 +199,6 @@ button.button-login:hover {
 
 .conteudo-nossa-solucao-escrito-card img{
     position: relative;
-    bottom: 140px;
 }
 
 /* Conteúdo do sobre nós */

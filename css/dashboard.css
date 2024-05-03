@@ -170,6 +170,7 @@ body {
 
 .navbar li:hover::after {
   width: 100%;
+
 }
 
 /* KPI's */
@@ -198,10 +199,13 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+  
 }
 
+
+
 #alerta_temperatura_baixa {
-  background-color: #8ecde7;
+  background-color: #42A5F5;
   width: 15%;
   height: 60%;
   display: flex;
@@ -211,7 +215,7 @@ body {
 }
 
 #alerta_temperatura_ideal {
-  background-color: greenyellow;
+  background-color: #9CCC65;
   width: 15%;
   height: 60%;
   display: flex;
@@ -220,7 +224,7 @@ body {
 }
 
 #alerta_temperatura_alta {
-  background-color: rgb(252, 103, 39);
+  background-color: #FF7043;
   width: 15%;
   height: 60%;
   margin-right: 40px;
@@ -230,8 +234,8 @@ body {
   border-radius: 0 4px 4px 0;
 }
 
-#alerta_umidade_baixa {
-  background-color: rgb(179, 175, 175);
+#alerta_umidade_baixa{
+  background-color: #A1B9CC;
   width: 15%;
   height: 60%;
   display: flex;
@@ -241,16 +245,16 @@ body {
 }
 
 #alerta_umidade_ideal {
-  background-color: var(--azul-escuro);
-  width: 15%;
-  height: 60%;
-  display: flex;
+background-color: #9CCC65;
+width: 15%;
+height: 60%;
+display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#alerta_umidade_alta {
-  background-color: #001d6c;
+#alerta_umidade_alta{
+  background-color: #0062FF;
   width: 15%;
   height: 60%;
   display: flex;
@@ -259,8 +263,8 @@ body {
   border-radius: 0 4px 4px 0;
 }
 
-.container_alerta > p,
-.container_proximidade > p {
+.container_alerta>p,
+.container_proximidade>p {
   font-size: 25px;
 }
 
