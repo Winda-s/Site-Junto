@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+    <link rel="stylesheet" href="css/simulador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <title>Calculadora Financeira Winda's</title>
+  </head>
+  
+  <body>
+    
+    <button class="button_back">
+      <a href="index.html"><img src="img/arrow-ios-back-svgrepo-com.svg" alt="button-back"> Voltar à página inicial</a>
+  </button>
+  <br>
+  
+  
+  
+  <div class="screen">
+    <main id="principal" class="principal">
+      <div class="screen1">
+
+         <h4>Quantos ares-condicionados possui:</h4> 
+          <input required="" type="text" id="input_qtd_ar_condicionado" placeholder="Ex: 2">
+          <span class="highlight"></span>
+          <span class="bar"></span><br>
+          <h4>Por quantos dias do mês permanecem ligados<br>(em média):</h4>
+          <input required="" type="text" id="input_qtd_horas" placeholder="Quantidade de dias">
+          <span class="highlight2"></span>
+          <span class="bar2"></span><br>
+          <h4>Por quantas horas por dia permanecem ligados<br>(em média):</h4>
+          <input required="" type="text" id="input_qtd_dias" placeholder="Quantidade de horas">
+          <span class="highlight3"></span>
+          <span class="bar3"></span><br>
+        
+        <h4>Tarifa regional de energia:</h4> 
+        <select id="select_tarifa_regional">
+          <option>Selecione o estado</option>
+          <option value="pa">PA</option>
+          <option value="mt">MT</option>
+          <option value="ms">MS</option>
+          <option value="al">AL</option>
+          <option value="pi">PI</option>
+          <option value="rj">RJ</option>
+          <option value="am">AM</option>
+          <option value="ac">AC</option>
+          <option value="ba">BA</option>
+          <option value="df">DF</option>
+          <option value="pe">PE</option>
+          <option value="to">TO</option>
+          <option value="mg">MG</option>
+          <option value="ce">CE</option>
+          <option value="rr">RR</option>
+          <option value="ma">MA</option>
+          <option value="ro">RO</option>
+          <option value="go">GO</option>
+          <option value="es">ES</option>
+          <option value="rs">RS</option>
+          <option value="rn">RN</option>
+          <option value="sp">SP</option>
+          <option value="se">SE</option>
+          <option value="pr">PR</option>
+          <option value="pb">PB</option>
+          <option value="sc">SC</option>
+        </select>
+        <br>
+
+        <h4>Potência do seu ar-condicionado em BTUs:</h4>
+        <select id="select_btu">
+          <option>Selecione o valor da potência em BTUs</option>
+          <option value="7000">7000</li>
+          <option value="9000">9000</li>
+          <option value="12000">12000</li>
+          <option value="16000">16000</li>
+          <option value="20000">20000</li>
+          <option value="24000">24000</li>
+          <option value="28000">28000</li>
+          <option value="32000">32000</li>
+          <option value="36000">36000</li>
+          <option value="40000">40000</li>
+          <option value="48000">48000</li>
+          <option value="56000">56000</li>
+        </select>
+
+        <button onclick="calculo()">
+          Calcular
+        </button>
+
+      </div>
+      
+    </main>
+    <div class="container">
+      <div id="div_resultado" style="display: none;" class="animate__animated animate__fadeInRight"></div>
+      <div id="div_resultado2" style="display: none;" class="animate__animated animate__fadeInRight"></div>
+      <div id="div_resultado3" style="display: none;" class="animate__animated animate__fadeInRight"></div>
+      
+    </div>
+    <div id="alerta" class="alerta-escondido">
+      Por favor, preencha todos os campos corretamente.
+    </div> 
+  </div>
+</body>
+
+</html>
+
+<script>
+
+  function calculo() {
+    let qtdArCondicionado = Number(input_qtd_ar_condicionado.value);
+    let horasUso = Number(input_qtd_horas.value);
+    let diasUso = Number(input_qtd_dias.value);
+    let btu = Number(select_btu.value);
+
+    let tarifaRegional = select_tarifa_regional.value;
+    let valorTarifa = 0;
+
+    let wattsAr = btu * 0.293;
+    let contaKwHMes = (wattsAr * horasUso * diasUso) / 1000;
+
+    if (isNaN(qtdArCondicionado) || isNaN(horasUso) || isNaN(diasUso) || isNaN(btu) || tarifaRegional === 'Selecione o estado' || btu === 'Selecione o valor da potência em BTUs') {
+      document.getElementById("alerta").style.display = 'block';
+      return;
+    } else {
+      document.getElementById("alerta").style.display = 'none';
+    }
+
+      if (tarifaRegional == 'ac') {
+      valorTarifa = 0.82;
+    } else if (tarifaRegional == 'al') {
+      valorTarifa = 0.86;
+    } else if (tarifaRegional == 'am') {
+      valorTarifa = 0.83;
+    } else if (tarifaRegional == 'ba') {
+      valorTarifa = 0.80;
+    } else if (tarifaRegional == 'ce') {
+      valorTarifa = 0.74;
+    } else if (tarifaRegional == 'df') {
+      valorTarifa = 0.76;
+    } else if (tarifaRegional == 'go' || tarifaRegional == 'ma') {
+      valorTarifa = 0.71;
+    } else if (tarifaRegional == 'mt' || tarifaRegional == 'ms') {
+      valorTarifa = 0.88;
+    } else if (tarifaRegional == 'mg' || tarifaRegional == 'to') {
+      valorTarifa = 0.75;
+    } else if (tarifaRegional == 'pa') {
+      valorTarifa = 0.96;
+    } else if (tarifaRegional == 'pb' || tarifaRegional == 'sc') {
+      valorTarifa = 0.60;
+    } else if (tarifaRegional == 'pr') {
+      valorTarifa = 0.63;
+    } else if (tarifaRegional == 'pe') {
+      valorTarifa = 0.76;
+    } else if (tarifaRegional == 'pi') {
+      valorTarifa = 0.85;
+    } else if (tarifaRegional == 'rj') {
+      valorTarifa = 0.84;
+    } else if (tarifaRegional == 'rn' || tarifaRegional == 'rs' || tarifaRegional == 'sp') {
+      valorTarifa = 0.68;
+    } else if (tarifaRegional == 'ro' || tarifaRegional == 'es') {
+      valorTarifa = 0.70;
+    } else if (tarifaRegional == 'rr') {
+      valorTarifa = 0.73;
+    } else if (tarifaRegional == 'se') {
+      valorTarifa = 0.65;
+    }
+
+    let gastoFinal = contaKwHMes * valorTarifa * qtdArCondicionado;
+    let economia = gastoFinal - (gastoFinal * 0.15);
+    
+    principal.style.animation = "animMain 1s";
+    document.getElementById("div_resultado").innerHTML = div_resultado.style.display = 'flex';
+    document.getElementById("div_resultado").innerHTML = div_resultado2.style.display = 'flex';
+    document.getElementById("div_resultado").innerHTML = div_resultado3.style.display = 'flex';
+
+    div_resultado.innerHTML = `Seu gasto em kWh/mês com ar-condicionado é de: <b style="color: red;">
+      ${contaKwHMes.toFixed(2)}</b> kWh/mês.`;
+      
+    div_resultado2.innerHTML = `15% da sua conta de energia, <br>poderá ser reduzida utilizando nosso sistema. <br> 
+    Fazendo com que os gastos de: <b style="color: red;">R$${gastoFinal.toFixed(2)}</b>
+    Passem a ser de: <b style="color: green;">R$${(economia).toFixed(2)}</b>`
+    
+      div_resultado3.innerHTML = `O uso do ar-condicionado pode causar diversos malefícios para a saúde pelos vírus e bactérias em ambientes fechados, além de impactar o meio ambiente 
+      devido ao grande consumo de energia elétrica, que resulta em emissão de gases de efeito estufa. Portanto, adquira sua: <b style="color: #2182BF;">Winda's</b>`
+  }
+
+</script>
