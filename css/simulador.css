@@ -83,6 +83,7 @@ main {
     display: flex;
     align-items: start;
     flex-direction: column;
+    justify-content: space-around;
     width: 528px;
     height: 40rem;
     background-color: rgb(33, 130, 191);
@@ -100,7 +101,7 @@ input {
     color: white;
     font-size: 14pt;
     margin-top: .9375rem;
-    height: 100px;
+    height: 30px;
     width: 100%;
 }
 
@@ -139,7 +140,7 @@ input {
     content: '';
     height: 2px;
     width: 0;
-    bottom: 1px;
+    bottom: 11px;
     position: absolute;
     background: #fdfdff;
     transition: 0.2s ease all;
@@ -294,15 +295,15 @@ h4 {
 }  
  
 #div_resultado {
-    animation: surgir 4.5s ease-out; 
+    animation: surgir 1s ease-out; 
 } 
 
 #div_resultado2 {
-    animation: surgir 6.5s ease-out; 
+    animation: surgir 1.5s ease-out; 
 } 
 
 #div_resultado3 {
-    animation: surgir 8.5s ease-out; 
+    animation: surgir 2s ease-out; 
 }  
 
 @keyframes surgir {
